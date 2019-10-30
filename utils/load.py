@@ -16,8 +16,16 @@ def get_ids(dir):
 def to_cropped_imgs(ids, dir, suffix, scale):
     """From a list of tuples, returns the correct cropped img"""
     for id in ids:
-        im = resize_and_crop(Image.open(dir + id + suffix), scale=scale)
-        yield im
+        print(suffix)
+        if suffix == '_mask.gif':
+          img_name_adjusted = dir + "mask_" + id + ".jpg"
+          print(img_name_adjusted)
+          im = resize_and_crop(Image.open(img_name_adjusted), scale=scale)
+          yield im
+
+        else:
+          im = resize_and_crop(Image.open(dir + id + suffix), scale=scale)
+          yield im
 
 
 def get_imgs_and_masks(ids, dir_img, dir_mask, scale):
