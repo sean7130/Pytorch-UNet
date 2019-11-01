@@ -17,7 +17,7 @@ def to_cropped_imgs(ids, dir, suffix, scale):
     """From a list of tuples, returns the correct cropped img"""
     for id in ids:
         # print(suffix)
-        if suffix == '_mask.gif' and dir == "data/masks/":
+        if suffix == '_mask.gif' and (dir == "data/masks/" or dir == "data_cat/masks/"):
           # Case of using cat data masks
           # filename = "masks_"+id+".jpg"
           img_name_adjusted = dir + "mask_" + id + ".jpg"
@@ -27,7 +27,7 @@ def to_cropped_imgs(ids, dir, suffix, scale):
 
         else:
           # any other case, for example using car data
-          # filename = id+suffix, suffix is "_masks.jpg" if it's a masks
+          # filename = id+suffix, suffix is "_masks.jpg"
           im = resize_and_crop(Image.open(dir + id + suffix), scale=scale)
           yield im
 
