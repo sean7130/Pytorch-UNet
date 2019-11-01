@@ -23,6 +23,7 @@ def to_cropped_imgs(ids, dir, suffix, scale):
           img_name_adjusted = dir + "mask_" + id + ".jpg"
           # print(img_name_adjusted)
           im = resize_and_crop(Image.open(img_name_adjusted), scale=scale)
+          im = im/255
           yield im
 
         else:
