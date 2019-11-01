@@ -28,7 +28,6 @@ def augment_pair(full_img_path, full_mask_path, dest_folder_path, b=30, FISH_EYE
 
 	images_aug = p.sample(b)
 
-	print(len(images_aug))
 	if dest_folder_path not in os.listdir():
 		os.mkdir(dest_folder_path)
 		os.mkdir(os.path.join(dest_folder_path, 'imgs'))
