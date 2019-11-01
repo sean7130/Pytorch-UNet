@@ -35,8 +35,11 @@ def augment_pair(full_img_path, full_mask_path, dest_folder_path, b=30, FISH_EYE
 
 	for i in range(len(images_aug)):
 		# Assumes .jpg extension name for masks
+	    # For mask, need to convert into grayscale 
+    
+    	mask_gray = cv2.cvtColor(images_aug[i][1], cv2.COLOR_BGR2GRAY)
 		cv2.imwrite(os.path.join(dest_folder_path, 'imgs', image_name[:-3]+str(i)+".jpg"), images_aug[i][0])
-		cv2.imwrite(os.path.join(dest_folder_path, 'masks', mask_name[:-3]+str(i)+".jpg",), images_aug[i][1])
+		cv2.imwrite(os.path.join(dest_folder_path, 'masks', mask_name[:-3]+str(i)+".jpg",), mask_gray)
 
 # if __name__ == "__main__":
 # 	img_path = "cat_data/Train/input/cat.0.jpg"
